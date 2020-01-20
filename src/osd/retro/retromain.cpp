@@ -388,10 +388,10 @@ void process_joypad_state(void)
       for(i = 0;i < MAX_BUTTONS; i++)
          joystate[j].button[i] = input_state_cb(j, RETRO_DEVICE_JOYPAD, 0,i)?0x80:0;
 
-      joystate[j].a1[0] = 2 * (input_state_cb(j, RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_LEFT, RETRO_DEVICE_ID_ANALOG_X));
-      joystate[j].a1[1] = 2 * (input_state_cb(j, RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_LEFT, RETRO_DEVICE_ID_ANALOG_Y));
-      joystate[j].a2[0] = 2 * (input_state_cb(j, RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_X));
-      joystate[j].a2[1] = 2 * (input_state_cb(j, RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_Y));
+      joystate[j].a1[0] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN,  0, RETRO_DEVICE_ID_LIGHTGUN_SCREEN_X));
+      joystate[j].a1[1] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN,  0, RETRO_DEVICE_ID_LIGHTGUN_SCREEN_Y));
+      joystate[j].a2[0] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_X));
+      joystate[j].a2[1] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_Y));
    }
 }
 
