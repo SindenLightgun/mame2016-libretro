@@ -389,9 +389,11 @@ void process_joypad_state(void)
          joystate[j].button[i] = input_state_cb(j, RETRO_DEVICE_JOYPAD, 0,i)?0x80:0;
 
       joystate[j].a1[0] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN,  0, RETRO_DEVICE_ID_LIGHTGUN_SCREEN_X));
-      if (joystate[j].a1[0]) > 65532) joystate[j].a1[0] = 65532; 
-      if (joystate[j].a1[0]) < -65016) joystate[j].a1[0] = -65016; 
+      if (joystate[j].a1[0] > 65532) joystate[j].a1[0] = 65532; 
+      if (joystate[j].a1[0] < -65016) joystate[j].a1[0] = -65016; 
       joystate[j].a1[1] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN,  0, RETRO_DEVICE_ID_LIGHTGUN_SCREEN_Y));
+      if (joystate[j].a1[1] > 65532) joystate[j].a1[1] = 65532; 
+      if (joystate[j].a1[1] < -64000) joystate[j].a1[1] = -64000;
       joystate[j].a2[0] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_X));
       joystate[j].a2[1] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_Y));
    }
