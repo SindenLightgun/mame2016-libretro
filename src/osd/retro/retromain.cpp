@@ -389,11 +389,23 @@ void process_joypad_state(void)
          joystate[j].button[i] = input_state_cb(j, RETRO_DEVICE_JOYPAD, 0,i)?0x80:0;
 
       joystate[j].a1[0] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN,  0, RETRO_DEVICE_ID_LIGHTGUN_SCREEN_X));
-      if (joystate[j].a1[0] > 63000) joystate[j].a1[0] = 63000; 
-      if (joystate[j].a1[0] < -62000) joystate[j].a1[0] = -62000; 
       joystate[j].a1[1] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN,  0, RETRO_DEVICE_ID_LIGHTGUN_SCREEN_Y));
-      if (joystate[j].a1[1] > 50000) joystate[j].a1[1] = 50000; 
-      if (joystate[j].a1[1] < -30000) joystate[j].a1[1] = -30000;
+         
+      if (input_cb(j, RETRO_DEVICE_LIGHTGUN, 0, RETRO_DEVICE_ID_LIGHTGUN_IS_OFFSCREEN))
+      {
+	      //top left
+	      joystate[j].a1[0] = -65534;
+	      joystate[j].a1[1] = -65534;
+      }
+	   
+      //debug
+      if (joystate[j].a1[0] == 0 && joystate[j].a1[1] == 0)
+      {
+	      joystate[j].a1[0] = 20000;
+	      joystate[j].a1[1] = 20000;
+      }
+      
+	   
       joystate[j].a2[0] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_X));
       joystate[j].a2[1] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_Y));
    }
