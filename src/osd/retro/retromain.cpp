@@ -399,11 +399,11 @@ void process_joypad_state(void)
       }
 	   
       //debug
-      if (joystate[j].a1[0] == 0 && joystate[j].a1[1] == 0)
-      {
-	      joystate[j].a1[0] = 20000;
-	      joystate[j].a1[1] = 20000;
-      }
+      //if (joystate[j].a1[0] == 0 && joystate[j].a1[1] == 0)
+      //{
+	 //     joystate[j].a1[0] = 20000;
+	   //   joystate[j].a1[1] = 20000;
+      //}
       
 	   
       joystate[j].a2[0] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, RETRO_DEVICE_INDEX_ANALOG_RIGHT, RETRO_DEVICE_ID_ANALOG_X));
