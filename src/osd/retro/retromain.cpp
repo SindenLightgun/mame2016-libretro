@@ -391,12 +391,12 @@ void process_joypad_state(void)
       joystate[j].a1[0] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN,  0, RETRO_DEVICE_ID_LIGHTGUN_SCREEN_X));
       joystate[j].a1[1] = 2 * (input_state_cb(j, RETRO_DEVICE_LIGHTGUN,  0, RETRO_DEVICE_ID_LIGHTGUN_SCREEN_Y));
          
-      //if (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, 0, RETRO_DEVICE_ID_LIGHTGUN_IS_OFFSCREEN))
-      //{
-//	      //top left
-//	      joystate[j].a1[0] = -65534;
-//	      joystate[j].a1[1] = -65534;
-  //    }
+      if (input_state_cb(j, RETRO_DEVICE_LIGHTGUN, 0, RETRO_DEVICE_ID_LIGHTGUN_IS_OFFSCREEN))
+      {
+	      //top left
+	      joystate[j].a1[0] = -65534;
+	      joystate[j].a1[1] = -65534;
+      }
 	   
       //debug
       //if (joystate[j].a1[0] == 0 && joystate[j].a1[1] == 0)
