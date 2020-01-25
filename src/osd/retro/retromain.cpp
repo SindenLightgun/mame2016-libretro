@@ -413,9 +413,10 @@ void process_joypad_state(void)
 
 void process_mouse_state(void)
 {
-   static int mbL = 0, mbR = 0;
+   static int mbL = 0, mbR = 0, mbM = 0;
    int mouse_l;
    int mouse_r;
+   int mouse_m;
    int16_t mouse_x;
    int16_t mouse_y;
 
@@ -426,6 +427,7 @@ void process_mouse_state(void)
    mouse_y = input_state_cb(0, RETRO_DEVICE_MOUSE, 0, RETRO_DEVICE_ID_MOUSE_Y);
    mouse_l = input_state_cb(0, RETRO_DEVICE_MOUSE, 0, RETRO_DEVICE_ID_MOUSE_LEFT);
    mouse_r = input_state_cb(0, RETRO_DEVICE_MOUSE, 0, RETRO_DEVICE_ID_MOUSE_RIGHT);
+   mouse_m = input_state_cb(0, RETRO_DEVICE_MOUSE, 0, RETRO_DEVICE_ID_MOUSE_MIDDLE);
    mouseLX = mouse_x*INPUT_RELATIVE_PER_PIXEL;;
    mouseLY = mouse_y*INPUT_RELATIVE_PER_PIXEL;;
 
@@ -449,6 +451,17 @@ void process_mouse_state(void)
    {
       mouseBUT[1]=0;
       mbR=0;
+   }
+	
+   if(mbM==0 && mouse_m)
+   {
+      mbM=1;
+      mouseBUT[2]=0x80;
+   }
+   else if(mbM==1 && !mouse_m)
+   {
+      mouseBUT[2]=0;
+      mbM=0;
    }
 }
 
