@@ -443,7 +443,7 @@ void process_mouse_state(void)
    if(mbR==0 && mouse_r)
    {
       mbR=1;
-      mouseBUT[1]=1;
+      mouseBUT[1]=0x80;
    }
    else if(mbR==1 && !mouse_r)
    {
